@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuat's Tracking</title>
+</head>
+
+<body>
+    <script>
+        var count = 0;
+        function hello() {
+            var p = document.getElementById('position');
+            setInterval(() => {
+                document.getElementById('counter').innerHTML = `Counter: ${++count}`;
+                navigator.geolocation.getCurrentPosition(coords => {
+                    p.innerHTML = `${coords.timestamp}, ${coords.coords.latitude}, ${coords.coords.longitude}<br>${p.innerHTML}`;
+                });
+            }, 1000);
+        }
+    </script>
+    <h1>Kuats Track</h1>
+    <p>DISCLAIMER: Kuat is mean. He wants to track you, of course you can always back off whenenver you want. Use at
+        your own risk!</p>
+    <button onclick="hello()">Track Me!</button>
+    <p id="counter"></p>
+    <p id="position"></p>
+</body>
+
+</html>
